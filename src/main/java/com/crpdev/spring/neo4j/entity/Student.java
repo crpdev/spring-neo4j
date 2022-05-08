@@ -1,9 +1,13 @@
 package com.crpdev.spring.neo4j.entity;
 
+import java.util.List;
+
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Property;
+import org.springframework.data.neo4j.core.schema.Relationship;
+import org.springframework.data.neo4j.core.schema.Relationship.Direction;
 
 @Node(labels = { "Student" })
 public class Student {
@@ -20,6 +24,12 @@ public class Student {
 	
 	@Property(name = "birth_year")
 	private Integer birthYear;
+	
+	@Relationship(type = "BELONGS_TO", direction = Direction.OUTGOING)
+	private Department department;
+	
+	@Relationship(type = "IS_LEARNING", direction = Direction.OUTGOING)
+	private List<IsLearningRelation> isLearningRelations;
 
 	public Long getId() {
 		return id;
