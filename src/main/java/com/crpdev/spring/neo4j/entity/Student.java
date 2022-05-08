@@ -11,23 +11,39 @@ import org.springframework.data.neo4j.core.schema.Relationship.Direction;
 
 @Node(labels = { "Student" })
 public class Student {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@Property(name = "name")
 	private String name;
-	
+
 	@Property(name = "country")
 	private String country;
-	
+
 	@Property(name = "birth_year")
 	private Integer birthYear;
-	
+
 	@Relationship(type = "BELONGS_TO", direction = Direction.OUTGOING)
 	private Department department;
-	
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+	public List<IsLearningRelation> getIsLearningRelations() {
+		return isLearningRelations;
+	}
+
+	public void setIsLearningRelations(List<IsLearningRelation> isLearningRelations) {
+		this.isLearningRelations = isLearningRelations;
+	}
+
 	@Relationship(type = "IS_LEARNING", direction = Direction.OUTGOING)
 	private List<IsLearningRelation> isLearningRelations;
 
