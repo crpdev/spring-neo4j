@@ -1,8 +1,18 @@
 package com.crpdev.spring.neo4j.entity;
 
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Property;
+
+@Node(labels = { "Depaertment "})
 public class Department {
 
+	@Id
+	@GeneratedValue
 	private Long id;
+	
+	@Property(name = "name")
 	private String name;
 
 	public Long getId() {

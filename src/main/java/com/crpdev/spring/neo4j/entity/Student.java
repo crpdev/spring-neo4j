@@ -1,10 +1,24 @@
 package com.crpdev.spring.neo4j.entity;
 
+import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import org.springframework.data.neo4j.core.schema.Id;
+import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Property;
+
+@Node(labels = { "Student" })
 public class Student {
 	
+	@Id
+	@GeneratedValue
 	private Long id;
+	
+	@Property(name = "name")
 	private String name;
+	
+	@Property(name = "country")
 	private String country;
+	
+	@Property(name = "birth_year")
 	private Integer birthYear;
 
 	public Long getId() {
